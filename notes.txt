@@ -1,2 +1,10 @@
 How to post a picture from events?
+	<%= render "pictures/form" %>
 	
+How to redirect back to parent model after create child?
+	
+how to get rid of end of shit error after adding @event, @picture in view
+	put whitespace after form_for...cmon wtf
+	
+get images to upload to amazon s3 and render in the index
+	- how to upload attachment as model

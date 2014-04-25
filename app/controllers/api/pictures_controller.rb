@@ -1,4 +1,4 @@
-class PicturesController < ApplicationController
+class Api::PicturesController < ApplicationController
   before_filter :get_event
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 

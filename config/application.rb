@@ -9,6 +9,12 @@ Bundler.require(:default, Rails.env)
 module ConvergeRails
   class Application < Rails::Application
     
+    # Paperclip (for Amazon) (we use EU servers)
+     # config.paperclip_defaults = {
+     #   :storage => :s3,
+     #   :s3_host_name => 's3-website-us-east-1.amazonaws.com'
+     # }
+    
     # self.allow_forgery_protection = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

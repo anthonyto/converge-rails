@@ -25,13 +25,13 @@
   <%= @event.description %>
 </p>
 
-<% @event.pictures.each do |picture| %>
-	<%= image_tag picture.url(:square) %>
+<% @event.pictures.each do |picture | %>
+	<%= image_tag picture.image.url(:medium) %>
+	<%= picture.image_file_name %>
 <% end %>
 
 
-<%= render "pictures/form" %>
 
-
+<%= link_to 'Add pictures', new_event_picture_path(@event.id)%>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

@@ -26,14 +26,24 @@ ConvergeRails::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Paperclip access to ImageMagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
   
+  # Overrride paperclip defaults
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['converge-rails'],
-      :access_key_id => ENV['AKIAJH7J6QIUKE5SM2KA'],
-      :secret_access_key => ENV['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']
+      # :bucket => ENV['S3_BUCKET_NAME'],
+      # :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      # :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :bucket => 'converge-rails',
+      :access_key_id => 'AKIAI5HT72X2VYPCTS2A',
+      :secret_access_key => '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'
     }
   }
+  
+  #AK: AKIAJJVY7HLNLQXBISAA
+  #SAK: Xwqb3OuPQSTv9lxlHMDiVdxJZ06bqzO7BluRiAfd
   
 end
