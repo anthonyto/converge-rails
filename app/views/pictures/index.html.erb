@@ -1,11 +1,50 @@
-<h1>Listing pictures</h1>
+<%- model_class = Picture -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:file_name) %></th>
+      <th><%= model_class.human_attribute_name(:time_taken) %></th>
+      <th><%= model_class.human_attribute_name(:event_id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:image_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:image_content_type) %></th>
+      <th><%= model_class.human_attribute_name(:image_file_size) %></th>
+      <th><%= model_class.human_attribute_name(:image_updated_at) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= link_to picture.id, picture_path(picture) %></td>
+        <td><%= picture.file_name %></td>
+        <td><%= picture.time_taken %></td>
+        <td><%= picture.event_id %></td>
+        <td><%= picture.user_id %></td>
+        <td><%= picture.image_file_name %></td>
+        <td><%= picture.image_content_type %></td>
+        <td><%= picture.image_file_size %></td>
+        <td><%= picture.image_updated_at %></td>
+        <td><%=l picture.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_picture_path(picture), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      picture_path(picture),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% @pictures.each do |picture| %>
-			<%= image_tag picture.image.url(:medium) %>
-			<%= picture.image_file_name %>
-			<%= picture.image.url %>
-<% end %>
-
-<br>
-
-<%= link_to 'New Picture', new_event_picture_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_picture_path,
+            :class => 'btn btn-primary' %>
