@@ -8,10 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:location) %></th>
-      <!-- <th><%= model_class.human_attribute_name(:start_time) %></th>
-      <th><%= model_class.human_attribute_name(:end_time) %></th> -->
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th> -->
       <!-- <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
     </tr>
   </thead>
@@ -21,10 +18,7 @@
         <td><%= link_to event.id, event_path(event) %></td>
         <td><%= link_to event.name, event_path(event) %></td>
         <td><%= event.location %></td>
-        <!-- <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td> -->
         <td><%= event.description %></td>
-        <!-- <td><%=l event.created_at %></td> -->
         <!-- <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_event_path(event), :class => 'btn btn-mini' %>
