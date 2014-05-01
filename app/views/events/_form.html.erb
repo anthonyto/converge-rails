@@ -14,13 +14,13 @@
   <div class="control-group">
     <%= f.label :start_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :start_time, :class => 'text_field' %>
+      <%= f.datetime_local_field :start_time, :class => 'datetime' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :end_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :end_time, :class => 'text_field' %>
+      <%= f.datetime_local_field :end_time, :class => 'datetime' %>
     </div>
   </div>
   <div class="control-group">
@@ -34,5 +34,5 @@
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 events_path, :class => 'btn' %>
-  </div>
+  </div>	
 <% end %>

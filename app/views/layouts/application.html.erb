@@ -49,15 +49,22 @@
 					<%= link_to 'Converge', '/', :class => 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <!-- <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li> -->
+						  <% if current_user %>
+						    <li>Welcome <strong><%= current_user.name %></strong>!</li>
+						    <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+						  <% else %>
+						    <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+						  <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
+		
+		<div id="user-widget">
+		</div>
+		
+		
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span9">
