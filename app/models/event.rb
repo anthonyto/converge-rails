@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
-  has_many :pictures, :dependent => :destroy
   belongs_to :user, foreign_key: 'uid'
+  has_many :pictures, :dependent => :destroy
+  
   accepts_nested_attributes_for :pictures
   
 end

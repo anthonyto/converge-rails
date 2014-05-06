@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :users do |t|
+    create_table :users, {:id => false} do |t|
       t.string :provider
       t.string :uid
       t.string :name
@@ -9,5 +9,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    execute "ALTER TABLE users ADD PRIMARY KEY (uid);"
   end
 end

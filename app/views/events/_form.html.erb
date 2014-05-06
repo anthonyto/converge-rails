@@ -29,6 +29,11 @@
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <div class="controls">
+			<%= f.hidden_field :uid, :value => current_user.uid %>
+		</div>
+	</div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
@@ -36,3 +41,5 @@
                 events_path, :class => 'btn' %>
   </div>	
 <% end %>
+
+<%= current_user.uid %>

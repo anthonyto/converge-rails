@@ -3,16 +3,28 @@
   <h1><%= @event.name%></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
-  <dd><%= @event.location %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:start_time) %>:</strong></dt>
-  <dd><%= @event.start_time %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:end_time) %>:</strong></dt>
-  <dd><%= @event.end_time %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @event.description %></dd>
-</dl>
+<ul>
+	<li>
+		<strong><%= model_class.human_attribute_name(:location) %>:</strong>
+		<%= @event.location %>
+	</li>
+	<li>
+		<strong><%= model_class.human_attribute_name(:start_time) %>:</strong>
+		<%= @event.start_time %>
+	</li>
+	<li>
+		<strong><%= model_class.human_attribute_name(:end_time) %>:</strong>
+		<%= @event.end_time %>
+	</li>
+	<li>
+		<strong><%= model_class.human_attribute_name(:description) %>:</strong>
+		<%= @event.description %>
+	</li>
+	<li>
+		<strong><%= model_class.human_attribute_name(:uid) %>:</strong>
+		<%= @event.uid %>
+	</li>
+</ul>	
 
 <div class="form-actions">
 	<%= link_to 'Add pictures', new_event_picture_path(@event.id), :class => 'btn' %>
