@@ -4,7 +4,6 @@ gem 'rails', '4.0.2'
 gem 'mysql2'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
 gem 'rabl'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
