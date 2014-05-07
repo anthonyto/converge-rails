@@ -7,6 +7,7 @@ gem 'turbolinks'
 gem 'rabl'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
+gem 'apipie-rails'
 
 # Front end shit
 gem "therubyracer"

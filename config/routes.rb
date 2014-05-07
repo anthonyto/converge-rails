@@ -1,4 +1,5 @@
 ConvergeRails::Application.routes.draw do
+  apipie
   # resources :pictures
   
   # root to: "events#index"

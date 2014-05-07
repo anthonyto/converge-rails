@@ -3,12 +3,17 @@ class Api::EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
+  api :GET, "/users/:user_uid/events", "Show all events that belong to a user."
+  param :user_uid, String, :desc => "User Facebook uid", :required => true
   def index
     @events = Event.where(uid: params[:user_uid])
   end
 
   # GET /events/1
   # GET /events/1.json
+  api :GET, "/users/:user_uid/events/:id", "Show details and all image urls for a single event."
+  param :user_uid, String, :desc => "User Facebook uid", :required => true
+  param :id, Integer, :desc => "Event id", :required => true
   def show
   end
   
@@ -18,11 +23,20 @@ class Api::EventsController < ApplicationController
   end
 
   # GET /events/1/edit
+  api :GET, "/users/:user_uid/events/:id/edit", "Edit an event."
+  param :user_uid, String, :desc => "User Facebook uid", :required => true
+  param :id, Integer, :desc => "Event id", :required => true
   def edit
   end
 
   # POST /events
   # POST /events.json
+  api :POST, "/users/:user_uid/events/", "Create an event underneath a user."
+  param :user_uid, String, :desc => "User that the event belongs to", :required => true
+  param :name, String, :desc => "Event name", :required => true
+  param :location, String, :desc => "Event location", :required => true
+  param :start_time, DateTime, :desc => "Start time", :required => true
+  param :end_time, DateTime, :desc => "End time", :required => true
   def create
     @event = Event.new(event_params)    
 
