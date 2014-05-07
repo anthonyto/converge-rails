@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to event_path(@picture.event_id), notice: 'Picture was successfully created.' }
+        format.html { redirect_to user_event_path(current_user.uid, @picture.event_id), notice: 'Picture was successfully created.' }
         format.json { render action: 'events/show', status: :created, location: @picture.event }
       else
         format.html { render action: 'new' }

@@ -15,19 +15,11 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.id, event_path(event) %></td>
-        <td><%= link_to event.name, event_path(event) %></td>
+        <td><%= link_to event.id, user_event_path(current_user.uid, event) %></td>
+        <td><%= link_to event.name, user_event_path(current_user.uid, event)%></td>
         <td><%= event.location %></td>
         <td><%= event.description %></td>
-        <!-- <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_event_path(event), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      event_path(event),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td> -->
+       
       </tr>
     <% end %>
   </tbody>

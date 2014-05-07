@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   
   def welcome
     if current_user
-      render "profile"
+      redirect_to user_events_path(current_user.uid)
     else 
       render "index"
     end

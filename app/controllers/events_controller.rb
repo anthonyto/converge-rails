@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(uid: params[:uid])
+    @events = Event.where(uid: current_user.uid)
   end
 
   # GET /events/1
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path(current_user.uid), notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
