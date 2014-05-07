@@ -4,15 +4,17 @@ ConvergeRails::Application.routes.draw do
   # root to: "events#index"
   root to: "sessions#welcome"
   
-  resources :users, param: :uid do
+  resources :users, param: :uid, only: [:create] do
     resources :events do 
       resources :pictures
     end
   end
 
   namespace :api do 
-    resources :events do
-      resources :pictures
+    resources :users, param: :uid, only: [:create] do
+      resources :events do 
+        resources :pictures
+      end
     end
   end
   

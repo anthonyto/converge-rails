@@ -4,14 +4,14 @@ class Api::EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where(uid: params[:user_uid])
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
   end
-
+  
   # GET /events/new
   def new
     @event = Event.new
@@ -24,11 +24,11 @@ class Api::EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params)    
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to user_events_path(current_user.uid), notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -69,6 +69,6 @@ class Api::EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :location, :start_time, :end_time, :description)
+      params.require(:event).permit(:name, :location, :start_time, :end_time, :description, :uid)
     end
 end
