@@ -34,6 +34,7 @@ class Api::EventsController < ApplicationController
   api :POST, "/users/:user_uid/events/", "Create an event underneath a user."
   param :user_uid, String, :desc => "User that the event belongs to", :required => true
   param :name, String, :desc => "Event name", :required => true
+  param :uid, String, :desc => "This belongs in the body, same as url parameter user_uid", :required => true
   param :location, String, :desc => "Event location", :required => true
   param :start_time, DateTime, :desc => "Start time", :required => true
   param :end_time, DateTime, :desc => "End time", :required => true
