@@ -12,7 +12,7 @@ class Api::PicturesController < ApplicationController
   # GET /pictures/1.json
   api :GET, "/users/:user_uid/events/:event_id/picture/:id", "Show a single picture."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
-  param :id, Integer, :desc => "Event id", :required => true
+  param :id, String, :desc => "Event id", :required => true
   def show
   end
 

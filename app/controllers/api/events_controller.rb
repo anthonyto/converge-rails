@@ -13,7 +13,7 @@ class Api::EventsController < ApplicationController
   # GET /events/1.json
   api :GET, "/users/:user_uid/events/:id", "Show details and all image urls for a single event."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
-  param :id, Integer, :desc => "Event id", :required => true
+  param :id, String, :desc => "Event id", :required => true
   def show
   end
   
@@ -25,7 +25,7 @@ class Api::EventsController < ApplicationController
   # GET /events/1/edit
   api :GET, "/users/:user_uid/events/:id/edit", "Edit an event."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
-  param :id, Integer, :desc => "Event id", :required => true
+  param :id, String, :desc => "Event id", :required => true
   def edit
   end
 
