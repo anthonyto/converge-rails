@@ -6,12 +6,16 @@ class Api::EventsController < ApplicationController
   api :GET, "/users/:user_uid/events", "Show all events that user belongs to."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
   def index
+    if(!User.exists?(uid: params[:user_uid]))
+      user = User.create({uid: params[:user_uid]})
+    else
+      user = User.find(params[:user_uid])
+    end
     @events = Event.where(uid: params[:user_uid])
-    user = User.find(params[:user_uid])
-    logger.info user.invites
     user.invites.map do |invite|
       @events << Event.find(invite.event_id) if !@events.exists?(Event.find(invite.event_id))
     end
+    # @events = user.events
   end
 
   # GET /events/1

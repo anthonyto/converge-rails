@@ -1,3 +1,3 @@
 curl -X POST -d"event%5Bname%5D=a&event%5Blocation%5D=a&event%5Bstart_time%5D=2014-05-08T02%3A31%3A56.323Z&event%5Bend_time%5D=2014-06-04T06%3A31%3A55.000Z&event%5Bdescription%5D=Description&event%5Buid%5D=1342094109" http://converge-rails.herokuapp.com/api/users/1342094109/events --header "Content-Type:application/x-www-form-urlencoded"
 
-curl -H "Content-Type: application/json" -d '[{"friend": {"name": "Anthony To","uid": "1741942458"}},{"friend": {"name": "Kevin Hsiung","uid": "1342094109"}}]' https://2d8ed0fd.ngrok.com/api/users/1741942458/events/1/invite
+curl -H "Content-Type: application/json" -d '[{"friend": {"name": "Anthony To","uid": "1741942458"}},{"friend": {"name": "Kevin Hsiung","uid": "1342094109"}}]' http://d4dcccf.ngrok.com/api/users/1741942458/events/1/invite

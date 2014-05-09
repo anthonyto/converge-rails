@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(uid: current_user.uid)
+    # @events = Event.where(uid: current_user.uid)
+    @events = current_user.events
   end
 
   # GET /events/1
@@ -21,7 +22,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
   end
-
+  
   # POST /events
   # POST /events.json
   def create
