@@ -9,6 +9,8 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:location) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:start_time) %></th>
+      <th><%= model_class.human_attribute_name(:end_time) %></th>
       <!-- <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
     </tr>
   </thead>
@@ -19,7 +21,8 @@
         <td><%= link_to event.name, user_event_path(current_user.uid, event)%></td>
         <td><%= event.location %></td>
         <td><%= event.description %></td>
-       
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
       </tr>
     <% end %>
   </tbody>

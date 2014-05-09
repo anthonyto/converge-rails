@@ -11,11 +11,7 @@ class Api::EventsController < ApplicationController
     else
       user = User.find(params[:user_uid])
     end
-    @events = Event.where(uid: params[:user_uid])
-    user.invites.map do |invite|
-      @events << Event.find(invite.event_id) if !@events.exists?(Event.find(invite.event_id))
-    end
-    # @events = user.events
+    @events = user.events
   end
 
   # GET /events/1
