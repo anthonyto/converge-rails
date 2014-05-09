@@ -32,21 +32,19 @@ class Api::EventsController < ApplicationController
   # POST /events
   # POST /events.json
   api :POST, "/users/:user_uid/events/", "Create an event underneath a user."
-  param :user_uid, String, :desc => "User that the event belongs to", :required => true
-  param :name, String, :desc => "Event name", :required => true
-  param :uid, String, :desc => "This belongs in the body, same as url parameter user_uid", :required => true
-  param :location, String, :desc => "Event location", :required => true
-  param :start_time, DateTime, :desc => "Start time", :required => true
-  param :end_time, DateTime, :desc => "End time", :required => true
+  param :user_uid, String, :desc => "Users Facebook Uid", :required => false
+  param :name, String, :desc => "Event name", :required => false
+  param :uid, String, :desc => "This belongs in the body, same as url parameter user_uid", :required => false
+  param :location, String, :desc => "Event location", :required => false
+  param :start_time, DateTime, :desc => "Start time", :required => false
+  param :end_time, DateTime, :desc => "End time", :required => false
   def create
     @event = Event.new(event_params)    
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to user_events_path(current_user.uid), notice: 'Event was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @event }
+        format.json { render :text => "That event worked, yo." }
       else
-        format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end

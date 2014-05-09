@@ -37,10 +37,8 @@ class Api::PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to user_event_path(current_user.uid, @picture.event_id), notice: 'Picture was successfully created.' }
-        format.json { render action: 'events/show', status: :created, location: @picture.event }
+        format.json { render :text => "That picture worked, yo." }
       else
-        format.html { render action: 'new' }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end
