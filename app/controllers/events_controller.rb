@@ -4,9 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    # @events = Event.where(uid: current_user.uid)
     @events = current_user.events.order(start_time: :desc)
-    # @events.order(:name)
   end
 
   # GET /events/1

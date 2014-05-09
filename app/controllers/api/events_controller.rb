@@ -11,7 +11,7 @@ class Api::EventsController < ApplicationController
     else
       user = User.find(params[:user_uid])
     end
-    @events = user.events
+    @events = user.events.order(start_time: :desc)
   end
 
   # GET /events/1
