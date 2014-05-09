@@ -4,7 +4,6 @@ class CreatePictures < ActiveRecord::Migration
       t.string :file_name
       t.datetime :time_taken
       t.integer :event_id
-      t.integer :user_id
 
       t.timestamps
     end
