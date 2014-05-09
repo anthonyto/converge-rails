@@ -28,6 +28,15 @@ class Api::EventsController < ApplicationController
   param :id, String, :desc => "Event id", :required => true
   def edit
   end
+  
+  # GET /events/1/invite
+  api :GET, "/users/:user_uid/events/:id/invite", "Invite friends to an Event."
+  param :user_uid, String, :desc => "User Facebook uid", :required => true
+  param :id, String, :desc => "Event id", :required => true
+  def invite
+    
+  end
+  
 
   # POST /events
   # POST /events.json

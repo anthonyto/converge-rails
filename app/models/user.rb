@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   self.primary_key = 'uid'
-  has_many :events
+  has_and_belongs_to_many :events
   
   
   # Omniauth interaction
