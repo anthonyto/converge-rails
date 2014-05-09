@@ -8,3 +8,13 @@ how to get rid of end of shit error after adding @event, @picture in view
 	
 get images to upload to amazon s3 and render in the index
 	- how to upload attachment as model
+
+Find user by uid in join table
+	- currently its still looking for user_id
+	- Fix by making has_many through
+	
+Initialize model in controller
+	- Just do some janky ass shit
+  @events = Event.where(uid: params[:user_uid])
+  @events << Event.find(invite.event_id) if !@events.exists?(Event.find(invite.event_id))
+	Ughhhhhh
