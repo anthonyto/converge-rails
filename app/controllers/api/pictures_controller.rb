@@ -28,7 +28,7 @@ class Api::PicturesController < ApplicationController
 
   # POST /pictures
   # POST /pictures.json
-  api :POST, "/users/:user_uid/event/:event_id/pictures", "Create a picture that belongs to an event."
+  api :POST, "/users/:user_uid/events/:event_id/pictures", "Create a picture that belongs to an event."
   param :user_uid, String, :desc => "User that the event belongs to", :required => true
   param :event_id, String, :desc => "Event id", :required => true
   def create
