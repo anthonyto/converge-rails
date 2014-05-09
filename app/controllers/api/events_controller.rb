@@ -34,7 +34,8 @@ class Api::EventsController < ApplicationController
   param :user_uid, String, :desc => "User Facebook uid", :required => true
   param :id, String, :desc => "Event id", :required => true
   def invite
-    
+    @event = Event.find(id: params[:event_id])
+    @event.inviteFriends
   end
   
 

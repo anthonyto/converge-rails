@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   
   accepts_nested_attributes_for :pictures
   
-  
+  def inviteFriends
+    # Add friends id and events to join table
+  end
   
 end
