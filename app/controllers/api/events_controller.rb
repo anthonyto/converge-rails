@@ -30,12 +30,23 @@ class Api::EventsController < ApplicationController
   end
   
   # GET /events/1/invite
-  api :GET, "/users/:user_uid/events/:id/invite", "Invite friends to an Event."
+  api :POST, "/users/:user_uid/events/:id/invite", "Invite friends to an event."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
-  param :id, String, :desc => "Event id", :required => true
+  param :event_id, String, :desc => "Event id", :required => true
+  param :_json, String, :desc => "JSON object of friends to invite", :required => true
   def invite
-    @event = Event.find(id: params[:event_id])
-    @event.inviteFriends
+    event = Event.find(params[:event_id])
+    friends = params[:_json]
+    friends.each do |friend|
+      if(!User.exists?(uid: friend[:friend][:uid]))
+        user = User.create({name: friend[:friend][:name], uid: friend[:friend][:uid]})
+      else
+        user = User.find(friend[:friend][:uid])
+      end
+      event.users << user if !event.users.exists?(user)
+    end
+    
+    format.json { render :text => "Friends have been invited!" }
   end
   
 

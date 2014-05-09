@@ -14,6 +14,7 @@ ConvergeRails::Application.routes.draw do
   namespace :api do 
     resources :users, param: :uid, only: [:create] do
       resources :events do 
+        post 'invite', :action => :invite
         resources :pictures
       end
     end

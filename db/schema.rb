@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509003636) do
+ActiveRecord::Schema.define(version: 20140509052147) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140509003636) do
 
   create_table "events_users", id: false, force: true do |t|
     t.integer "event_id"
-    t.integer "user_id",  null: false
     t.string  "uid"
   end
 
@@ -42,9 +41,8 @@ ActiveRecord::Schema.define(version: 20140509003636) do
     t.datetime "image_updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", primary_key: "uid", force: true do |t|
     t.string   "provider"
-    t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
