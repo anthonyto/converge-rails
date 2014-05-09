@@ -66,7 +66,9 @@ class Api::EventsController < ApplicationController
   param :start_time, DateTime, :desc => "Start time", :required => false
   param :end_time, DateTime, :desc => "End time", :required => false
   def create
+    user = User.where(uid: params[:user_uid])
     @event = Event.new(event_params)    
+    @event.users << user
 
     respond_to do |format|
       if @event.save
