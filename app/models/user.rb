@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-  self.primary_key = 'uid'
-  has_many :events
+  self.primary_key = "uid"
+  has_many :invites, foreign_key: "uid"
+  has_many :events, through: :invites
+  has_and_belongs_to_many :events
   
   
   # Omniauth interaction

@@ -3,10 +3,15 @@ class Api::EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
-  api :GET, "/users/:user_uid/events", "Show all events that belong to a user."
+  api :GET, "/users/:user_uid/events", "Show all events that user belongs to."
   param :user_uid, String, :desc => "User Facebook uid", :required => true
   def index
     @events = Event.where(uid: params[:user_uid])
+    user = User.find(params[:user_uid])
+    logger.info user.invites
+    user.invites.map do |invite|
+      @events << Event.find(invite.event_id) if !@events.exists?(Event.find(invite.event_id))
+    end
   end
 
   # GET /events/1
@@ -28,6 +33,28 @@ class Api::EventsController < ApplicationController
   param :id, String, :desc => "Event id", :required => true
   def edit
   end
+  
+  # GET /events/1/invite
+  api :POST, "/users/:user_uid/events/:id/invite", "Invite friends to an event."
+  param :user_uid, String, :desc => "User Facebook uid", :required => true
+  param :event_id, String, :desc => "Event id", :required => true
+  # param :_json, String, :desc => "JSON object of friends to invite", :required => true
+  def invite
+    event = Event.find(params[:event_id])
+    friends = params[:_json]
+    friends.each do |friend|
+      if(!User.exists?(uid: friend[:friend][:uid]))
+        user = User.create({name: friend[:friend][:name], uid: friend[:friend][:uid]})
+      else
+        user = User.find(friend[:friend][:uid])
+      end
+      event.users << user if !event.users.exists?(user)
+    end
+    
+    render :nothing => true
+    # render plain: "Friends were successfully invited."
+  end
+  
 
   # POST /events
   # POST /events.json
