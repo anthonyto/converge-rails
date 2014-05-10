@@ -3,7 +3,8 @@ class Picture < ActiveRecord::Base
   
   has_attached_file :image, 
                     :styles => { 
-                      :medium => "640x1160>", 
+                      :thumb => "300x300#",
+                      :medium => "640x1160>" 
                     }, 
                     :default_url => "/images/:style/missing.png"
                     # :path => "/events/:event_id/pictures/:id"

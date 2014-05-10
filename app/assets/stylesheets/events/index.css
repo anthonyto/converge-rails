@@ -1,0 +1,25 @@
+.center{
+	text-align: center;
+}
+
+h1{
+	color: white;
+	font-weight: 100 !important;
+}
+
+table {
+	background-color: #FFFFFF;
+	border-radius: 15px;
+}
+
+a:hover{
+	text-decoration: none;
+	background-color: inherit !important;
+	color: #0099CC !important;
+}
+
+/*a:link {background-color: #FFFFFF;}
+a:visited {background-color:#FFFFFF;}
+a:hover {background-color:#FFFFFF;}
+a:active {background-color:#FFFFFF;}
+*/

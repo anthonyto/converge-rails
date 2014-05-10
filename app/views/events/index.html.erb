@@ -1,33 +1,52 @@
-<%- model_class = Event -%>
-<div class="page-header">
-  <h1>Your Events</h1>
+<!-- <%- model_class = Event -%>
+<div class="page-header center">
+  <h1>Events</h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:location) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:start_time) %></th>
-      <th><%= model_class.human_attribute_name(:end_time) %></th>
-      <!-- <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.id, user_event_path(current_user.uid, event) %></td>
-        <td><%= link_to event.name, user_event_path(current_user.uid, event)%></td>
-        <td><%= event.location %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_event_path,
-            :class => 'btn btn-primary' %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<table class="table table-hover">
+			  <thead>
+			  </thead>
+			  <tbody>
+			    <% @events.each do |event| %>
+			      <tr>
+			        <td><%= link_to event.name, user_event_path(current_user.uid, event)%></td>
+			        <td><%= event.location %></td>
+			        <td><%= event.description %></td>
+			        <td><%= event.start_time %></td>
+			        <td><%= event.end_time %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+
+			<div class="center"><%= link_to t('.new', :default => t("helpers.links.new")),
+			            new_user_event_path,
+			            :class => 'btn btn-primary' %>
+								</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+</div> -->
+
+<% @events.each_slice(3) do |slice| %>
+	<div class="container-fluid">
+		<div class="row">
+			<% slice.each do |event| %>
+				<div class="col-md-4">
+					<%= event.name %>
+					<% if !event.pictures.first.nil? %>
+						<%= image_tag event.pictures.first.image.url(:thumb) %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
+
