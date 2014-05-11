@@ -1,49 +1,19 @@
-<!-- <%- model_class = Event -%>
-<div class="page-header center">
-  <h1>Events</h1>
-</div>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="col-md-8">
-			<table class="table table-hover">
-			  <thead>
-			  </thead>
-			  <tbody>
-			    <% @events.each do |event| %>
-			      <tr>
-			        <td><%= link_to event.name, user_event_path(current_user.uid, event)%></td>
-			        <td><%= event.location %></td>
-			        <td><%= event.description %></td>
-			        <td><%= event.start_time %></td>
-			        <td><%= event.end_time %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-
-			<div class="center"><%= link_to t('.new', :default => t("helpers.links.new")),
-			            new_user_event_path,
-			            :class => 'btn btn-primary' %>
-								</div>
-		</div>
-		<div class="col-md-2">
-		</div>
-	</div>
-</div> -->
-
-<% @events.each_slice(3) do |slice| %>
+<% @events.each_slice(4) do |slice| %>
 	<div class="container-fluid">
 		<div class="row">
 			<% slice.each do |event| %>
-				<div class="col-md-4">
-					<%= event.name %>
 					<% if !event.pictures.first.nil? %>
-						<%= image_tag event.pictures.first.image.url(:thumb) %>
+						<% url = event.pictures.first.image.url(:thumb)%>
+					<% else %>
+						<% url = "http://www.eurowildlife.org/wp-content/uploads/2012/02/European-Wildlife-Brown-Bear-Bears-Extinct-Austria-Protection-Endangered-Species.jpg" %>
 					<% end %>
-				</div>
+						<div class="col-md-3" style="background: url('<%= url %>') no-repeat; background-size: cover; background-position: center center; height:328px">
+							<div class="outer-wrapper">
+								<div class"inner-wrapper">
+									<h4><%= link_to event.name, user_event_path(current_user.uid, event.id) %></h4>
+								</div>
+							</div>
+						</div>
 			<% end %>
 		</div>
 	</div>

@@ -1,42 +1,44 @@
 <%- model_class = Event -%>
 <div class="page-header">
-  <h1><%= @event.name%></h1>
+  <h3><%= @event.name%></h3>
+	<ul>
+		<li>
+			<strong><%= model_class.human_attribute_name(:location) %>:</strong>
+			<%= @event.location %>
+		</li>
+		<li>
+			<strong><%= model_class.human_attribute_name(:start_time) %>:</strong>
+			<%= @event.start_time %>
+		</li>
+		<li>
+			<strong><%= model_class.human_attribute_name(:end_time) %>:</strong>
+			<%= @event.end_time %>
+		</li>
+		<li>
+			<strong><%= model_class.human_attribute_name(:description) %>:</strong>
+			<%= @event.description %>
+		</li>
+		<li>
+			<strong><%= model_class.human_attribute_name(:uid) %>:</strong>
+			<%= @event.uid %>
+		</li>
+	</ul>
 </div>
 
-<ul>
-	<li>
-		<strong><%= model_class.human_attribute_name(:location) %>:</strong>
-		<%= @event.location %>
-	</li>
-	<li>
-		<strong><%= model_class.human_attribute_name(:start_time) %>:</strong>
-		<%= @event.start_time %>
-	</li>
-	<li>
-		<strong><%= model_class.human_attribute_name(:end_time) %>:</strong>
-		<%= @event.end_time %>
-	</li>
-	<li>
-		<strong><%= model_class.human_attribute_name(:description) %>:</strong>
-		<%= @event.description %>
-	</li>
-	<li>
-		<strong><%= model_class.human_attribute_name(:uid) %>:</strong>
-		<%= @event.uid %>
-	</li>
-</ul>	
-
-<div class="form-actions">
-	<%= link_to 'Add pictures', new_user_event_picture_path(current_user.uid, @event.id), :class => 'btn' %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_user_event_path(current_user.uid, @event), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              user_event_path(current_user.uid, @event),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-
-<% @event.pictures.each do |picture | %>
-	<%= image_tag picture.image.url(:thumb) %>
+<% @event.pictures.each_slice(4) do |slice| %>
+	<div class="container-fluid">
+		<div class="row">
+			<% slice.each do |picture| %>
+				<div class="col-md-3">
+					<%= image_tag picture.image.url(:thumb) %>
+				</div>
+			<% end %>
+		</div>
+	</div>
 <% end %>
+
+
+	<%= link_to 'Add pictures', new_user_event_picture_path(current_user.uid, @event.id), :class => 'btn' %>
+  <%= link_to 'Edit', edit_user_event_path(current_user.uid, @event), :class => 'btn' %>
+
+
