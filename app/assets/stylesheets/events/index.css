@@ -20,6 +20,10 @@ h3{
 	color: white;
 }
 
+ul{
+	list-style-type: none;
+}
+
 li{
 	color: white;
 }

@@ -3,26 +3,25 @@
   <h3><%= @event.name%></h3>
 	<ul>
 		<li>
-			<strong><%= model_class.human_attribute_name(:location) %>:</strong>
 			<%= @event.location %>
 		</li>
 		<li>
-			<strong><%= model_class.human_attribute_name(:start_time) %>:</strong>
 			<%= @event.start_time %>
 		</li>
 		<li>
-			<strong><%= model_class.human_attribute_name(:end_time) %>:</strong>
 			<%= @event.end_time %>
 		</li>
 		<li>
-			<strong><%= model_class.human_attribute_name(:description) %>:</strong>
 			<%= @event.description %>
 		</li>
 		<li>
-			<strong><%= model_class.human_attribute_name(:uid) %>:</strong>
 			<%= @event.uid %>
 		</li>
+		<li>
+				<button type="button" class="btn btn-info btn-xs"><%= link_to 'Add pictures', new_user_event_picture_path(current_user.uid, @event.id)%></button>
+		</li>
 	</ul>
+	
 </div>
 
 <% @event.pictures.each_slice(4) do |slice| %>
@@ -37,8 +36,5 @@
 	</div>
 <% end %>
 
-
-	<%= link_to 'Add pictures', new_user_event_picture_path(current_user.uid, @event.id), :class => 'btn' %>
-  <%= link_to 'Edit', edit_user_event_path(current_user.uid, @event), :class => 'btn' %>
 
 
