@@ -15,9 +15,6 @@
 			<%= @event.description %>
 		</li>
 		<li>
-			<%= @event.uid %>
-		</li>
-		<li>
 				<button type="button" class="btn btn-info btn-xs"><%= link_to 'Add pictures', new_user_event_picture_path(current_user.uid, @event.id)%></button>
 				<button type="button" class="btn btn-info btn-xs"><%= link_to 'Download pictures', "#{@event.id}/download" %></button>
 		</li>
