@@ -7,6 +7,7 @@ ConvergeRails::Application.routes.draw do
   
   resources :users, param: :uid, only: [:create] do
     resources :events do 
+      get 'download', :action => :download
       resources :pictures
     end
   end

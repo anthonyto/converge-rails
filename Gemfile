@@ -8,6 +8,7 @@ gem 'rabl'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
 gem 'apipie-rails'
+gem 'rubyzip'
 
 # Front end shit
 gem 'jquery-rails'

@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'zip'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -20,6 +23,26 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+  end
+  
+  def download
+    event = Event.find(params[:event_id])
+    pictures = event.pictures
+    t = Tempfile.new("awesome")
+    
+    Zip::OutputStream.open(t.path) do |z|
+      pictures.each do |picture|
+        # data = open(picture.image.url)
+        z.put_next_entry(picture.image_file_name)
+        z.print(URI.parse(picture.image.url).read)
+        # z.put_next_entry(Paperclip.io_adapters.for(picture.image).read)
+        # z.print IO.read(picture.image.url)
+      end
+    end
+    
+    send_file t.path, :type => 'application/zip', :disposition => 'attachment', :filename => "Awesome.zip"
+
+    t.close 
   end
   
   # POST /events
