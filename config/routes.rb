@@ -1,8 +1,6 @@
 ConvergeRails::Application.routes.draw do
   apipie
-  # resources :pictures
   
-  # root to: "events#index"
   root to: "sessions#welcome"
   
   resources :users, param: :uid, only: [:create] do
