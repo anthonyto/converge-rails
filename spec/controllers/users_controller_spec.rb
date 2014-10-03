@@ -18,12 +18,12 @@ RSpec.describe UsersController, :type => :controller do
   # UsersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET new" do
-    it "assigns a new user as @user" do
-      get :new, {}, valid_session
-      expect(assigns(:user)).to be_a_new(User)
-    end
-  end
+  # describe "GET new" do
+  #   it "assigns a new user as @user" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:user)).to be_a_new(User)
+  #   end
+  # end
 
   describe "POST create" do
     describe "with valid params" do
