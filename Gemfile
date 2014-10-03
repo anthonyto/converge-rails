@@ -10,7 +10,7 @@ gem 'aws-sdk'
 gem 'apipie-rails'
 gem 'rubyzip'
 
-# Front end shit
+# Front end stuff
 gem 'jquery-rails'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -27,6 +27,10 @@ gem "koala", "~> 1.8.0rc1"
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :test, :development do 
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
 # Use ActiveModel has_secure_password

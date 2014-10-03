@@ -9,6 +9,10 @@ Bundler.require(:default, Rails.env)
 module ConvergeRails
   class Application < Rails::Application
     
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+    
     # Paperclip (for Amazon) (we use EU servers)
      # config.paperclip_defaults = {
      #   :storage => :s3,
